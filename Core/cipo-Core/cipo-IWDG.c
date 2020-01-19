@@ -19,5 +19,5 @@ void Enable_SH_DEBUG(void) {
 }
 
 void IWDGTask_Callback ( qEvent_t e) {
-	LL_IWDG_ReloadCounter(IWDG);
+	LL_IWDG_ReloadCounter(IWDG); // reset IWDG
 }
