@@ -28,6 +28,7 @@ extern qCoroutineSemaphore_t FreeBuzzer;
 #include "cipo-IWDG.h"
 #include "cipo-LED.h"
 #include "cipo-KNOCK.h"
+#include "cipo-BUZZER.h"
 // **** QuarkTS TASK List - END **** //
 
 

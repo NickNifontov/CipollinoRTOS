@@ -28,4 +28,11 @@
 #define KNOCK_HELLO_PULS 5
 //**** KNOCK DEFINES --- END ****//
 
+//**** BUZZER DEFINES --- BEGIN ****//
+#define BUZZ_INTERVAL 1.0
+#define BUZZ_LENGTH 0.4
+#define BUZZ_MAX_LENGTH 10 // in sec
+#define BUZZ_MAX_LENGTH_ROLLBACK 20 // in sec
+//**** BUZZER DEFINES --- END ****//
+
 #endif /* CIPO_CORE_CIPO_CONFIG_H_ */
