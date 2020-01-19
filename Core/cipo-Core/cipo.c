@@ -8,7 +8,7 @@
 #include "cipo.h"
 
 // **** Buzzer - BEGIN **** //
-qCoroutineSemaphore_t FreeBuzzer;
+qCoroutineSemaphore_t FreeBuzzer; // Semaphore for Buzzer resource
 // **** Buzzer - END **** //
 
 
