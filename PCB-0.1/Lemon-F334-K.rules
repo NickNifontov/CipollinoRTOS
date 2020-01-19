@@ -1,0 +1,120 @@
+
+(rules PCB Lemon-F334-K
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 21076)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-power-1" "Via[0-1]_800:400_um" "power-1"
+  )
+  (via 
+    "Via[0-1]_800:400_um-power-2" "Via[0-1]_800:400_um" "power-2"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    "power-1" "Via[0-1]_800:400_um-power-1"
+  )
+  (via_rule
+    "power-2" "Via[0-1]_800:400_um-power-2"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND "START-STOP" "Net-(Q1-Pad1)" "CMD-START-STOP" +3V3 "Net-(C6-Pad1)" "Net-(C1-Pad2)" "Net-(R5-Pad1)"
+    "PF0_" "PF1_" "Net-(R6-Pad1)" "Net-(R8-Pad1)" "Net-(BZ1-Pad1)" "Net-(BZ1-Pad2)" "Net-(Q2-Pad1)" "Net-(J2-Pad1)"
+    "DRV_SD" "PWM_IN1" "PWM_IN2" "Net-(J3-Pad2)" "Net-(J3-Pad4)" "50HZ_A" "Net-(Q3-Pad1)" "50HZ_B"
+    "Net-(Q4-Pad1)" "IGLA_CMD" "Net-(Q5-Pad1)" "BLOCK-PEREK" DIO CLK BUZZER "CMD-BLOCK-PEREK"
+    "Net-(Q6-Pad1)" "OC-I" "ADC-OC-I" "OC-V" "ADC-OC-V" "ADC-15V" "ADC-AB" AB
+    "BUZZER_LEVEL" "ADC_TEMP" "TEMP_B" "TEMP_A" "TEMP_LEVEL" "Net-(D16-Pad1)" "LED_TEMP" "LED_AB"
+    "Net-(D18-Pad1)" "LED_I" "Net-(D20-Pad1)" "Net-(D22-Pad1)" "LED_V" "Net-(Q7-Pad1)" "COOLER1_CMD" "TX_IN"
+    "RX_IN" "TX_OUT" "RX_OUT" "Net-(H1-Pad1)" "Net-(H2-Pad1)" "SYNC-A" "Net-(Q8-Pad1)" "SYNC-A-IN"
+    "SYNC-CMD-OUT" "Net-(Q9-Pad1)" "SYNC-CMD" "PWM2_X" "PWM1_X"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "power-1"
+    16V +15V
+    (clearance_class "power-1")
+    (via_rule power-1)
+    (rule
+      (width 1000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "power-2"
+    +12V PWM1 PWM2 "50HZ_1" "50HZ_2" IGLA "CURRENT-PROTECTION-POLKA" OC
+    "Net-(D7-Pad1)" "Net-(R33-Pad1)" "Net-(R35-Pad2)" "Net-(D10-Pad1)" "Net-(R39-Pad2)" COOLER1 "Net-(D26-Pad1)" "Net-(D26-Pad2)"
+    "Net-(D27-Pad2)" "Net-(D27-Pad1)"
+    (clearance_class "power-2")
+    (via_rule power-2)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
