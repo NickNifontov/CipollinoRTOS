@@ -9,8 +9,6 @@
 #define CIPO_CORE_CIPO_IWDG_H_
 
 #include "cipo.h"
-#include "QuarkTS.h"
-#include "stm32f3xx_ll_iwdg.h"
 
 extern qTask_t IWDGTask;
 

@@ -7,15 +7,22 @@
 
 #include "cipo.h"
 
+// **** Buzzer - BEGIN **** //
+qCoroutineSemaphore_t FreeBuzzer;
+// **** Buzzer - END **** //
+
+
 // **** QuarkTS - BEGIN **** //
 void SetupQuarkTS(void) {
 	qSchedulerSetup(NULL, TIMER_TICK, IWDGTask_Callback);
 
-	qSchedulerAdd_Task ( &IWDGTask , IWDGTask_Callback , qLowest_Priority , 1 , qPeriodic , qEnabled , NULL );
-	qSchedulerAdd_Task ( &LED_ITask , LED_ITask_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
-	qSchedulerAdd_Task ( &LED_VTask , LED_VTask_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
-	qSchedulerAdd_Task ( &LED_ABTask , LED_ABTask_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
-	qSchedulerAdd_Task ( &LED_TEMPTask , LED_TEMPTask_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
+	qSchedulerAdd_Task ( &IWDGTask , IWDGTask_Callback , qLowest_Priority , IWDG_INTERVAL , qPeriodic , qEnabled , NULL );
+	qSchedulerAdd_Task ( &LED_Task , LED_Task_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
+	qSchedulerAdd_Task ( &KNOCK_Task , KNOCK_Task_Callback , qLowest_Priority , KNOCK_INTERVAL , 2+2*KNOCK_HELLO_PULS , qEnabled , NULL );
+
+	// Free Buzzer Resource
+	qCoroutineSemaphoreInit(&FreeBuzzer,0);
+	qCoroutineSemaphoreSignal(&FreeBuzzer);
 }
 
 void RunQuarkTS(void) {

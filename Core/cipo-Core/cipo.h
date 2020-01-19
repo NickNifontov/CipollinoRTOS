@@ -9,13 +9,6 @@
 #define CIPO_CORE_CIPO_H_
 
 #include "cipo-Config.h"
-#include "cipo-IWDG.h"
-
-#include "cipo-LED_I.h"
-#include "cipo-LED_V.h"
-#include "cipo-LED_AB.h"
-#include "cipo-LED_TEMP.h"
-
 #include "main.h"
 
 // **** QuarkTS - BEGIN **** //
@@ -26,6 +19,16 @@
 void SetupQuarkTS(void);
 void RunQuarkTS(void);
 // **** QuarkTS - END **** //
+
+// **** Buzzer - BEGIN **** //
+extern qCoroutineSemaphore_t FreeBuzzer;
+// **** Buzzer - END **** //
+
+// **** QuarkTS TASK List - BEGIN **** //
+#include "cipo-IWDG.h"
+#include "cipo-LED.h"
+#include "cipo-KNOCK.h"
+// **** QuarkTS TASK List - END **** //
 
 
 // **** GLOBAL STATE - BEGIN **** //
