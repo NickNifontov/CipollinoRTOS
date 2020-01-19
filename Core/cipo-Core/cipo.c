@@ -19,7 +19,7 @@ void SetupQuarkTS(void) {
 	qSchedulerAdd_Task ( &IWDGTask , IWDGTask_Callback , qLowest_Priority , IWDG_INTERVAL , qPeriodic , qEnabled , NULL );
 	qSchedulerAdd_Task ( &LED_Task , LED_Task_Callback , qLowest_Priority , LED_HELLO_INTERVAL , qPeriodic , qEnabled , NULL );
 	qSchedulerAdd_Task ( &KNOCK_Task , KNOCK_Task_Callback , qLowest_Priority , KNOCK_INTERVAL , 2+2*KNOCK_HELLO_PULS , qEnabled , NULL );
-	qSchedulerAdd_Task ( &BUZZER_Task , BUZZER_Task_Callback , qLowest_Priority , KNOCK_INTERVAL , 2+2*BUZZ_MAX_LENGTH , qDisabled , NULL );
+	qSchedulerAdd_Task ( &BUZZER_Task , BUZZER_Task_Callback , qLowest_Priority , KNOCK_INTERVAL , 4 , qDisabled , NULL ); // One-pulse buzz
 
 	// Free Buzzer Resource
 	qCoroutineSemaphoreInit(&FreeBuzzer,0);
