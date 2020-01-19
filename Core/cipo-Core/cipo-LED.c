@@ -22,7 +22,6 @@ void LED_Task_Callback ( qEvent_t e) {
 		LL_GPIO_ResetOutputPin(GPIOC, LED_V_Pin| LED_I_Pin);
 		LL_GPIO_ResetOutputPin(GPIOB, LED_AB_Pin|LED_TEMP_Pin);
 		qSTimerDisarm (& timeout );
-		BuzzOn();
 	}
 
 	if (qSTimerStatus(& timeout )) {

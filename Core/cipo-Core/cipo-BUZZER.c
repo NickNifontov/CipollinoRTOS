@@ -9,24 +9,31 @@
 
 extern qCoroutineSemaphore_t FreeBuzzer;
 qTask_t BUZZER_Task;
+qTask_t BUZZER_Rollback_Task;
+
+void BUZZER_Rollback_Task_Callback ( qEvent_t e) {
+	BuzzOn();
+}
 
 void BuzzOn(void) {
 	qTaskSetIterations(&BUZZER_Task,2+2*BUZZ_MAX_LENGTH);
+	qTaskSetIterations(&BUZZER_Rollback_Task,1);
+	qTaskSuspend(&BUZZER_Rollback_Task);
 	qTaskResume(&BUZZER_Task);
-}
-
-void BuzzReset(void) {
-	//
 }
 
 void BuzzStop(void){
 	qTaskSuspend(&BUZZER_Task);
+	qTaskSuspend(&BUZZER_Rollback_Task);
+
+	KNOCK(5);
 }
 
 void BUZZER_Task_Callback ( qEvent_t e){
 	qCoroutineBegin {
 		if (e->FirstIteration) {
 			qCoroutineSemaphoreWait(&FreeBuzzer);
+			qTaskSuspend(&BUZZER_Rollback_Task);
 		}
 
 		if ((e->FirstIteration ) || (e->LastIteration )) {
@@ -35,6 +42,7 @@ void BUZZER_Task_Callback ( qEvent_t e){
 		}
 
 		if (e->LastIteration ) {
+			qTaskResume(&BUZZER_Rollback_Task);
 			qCoroutineSemaphoreSignal(&FreeBuzzer);
 		}
 
