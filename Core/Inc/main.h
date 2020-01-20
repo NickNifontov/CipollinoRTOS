@@ -23,6 +23,8 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#define CCMRAM __attribute__((section(".ccmram")))
+
 #ifdef __cplusplus
 extern "C" {
 #endif

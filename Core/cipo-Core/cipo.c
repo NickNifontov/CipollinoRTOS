@@ -4,7 +4,6 @@
  *  Created on: Jan 18, 2020
  *      Author: Nick Nifontov
  */
-
 #include "cipo.h"
 
 // **** Buzzer - BEGIN **** //
