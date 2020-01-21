@@ -182,14 +182,14 @@ SECTIONS
     __bss_end__ = _ebss;
   } >RAM
 
-  
-  _siccmram = LOADADDR(.ccmram);
 
-  /* CCM-RAM section 
+	_siccmram = LOADADDR(.ccmram); /* May be already present */
+
+/* CCM-RAM section 
   * 
   * IMPORTANT NOTE! 
-  * If initialized variables will be placed in this section,
-  * the startup code needs to be modified to copy the init-values.  
+  * If variables placed in this section must be zero initialized,
+  * the startup code needs to be modified to initialize this section.  
   */
   .ccmram :
   {
@@ -200,8 +200,27 @@ SECTIONS
     
     . = ALIGN(4);
     _eccmram = .;       /* create a global symbol at ccmram end */
+  } >CCMRAM
+  
+
+  /* Initialized CCM-RAM section 
+  * 
+  * IMPORTANT NOTE! 
+  * If initialized variables will be placed in this section, 
+  * the startup code needs to be modified to copy the init-values.  
+  */
+  .ccmidata : 
+  {
+    . = ALIGN(4);
+    _sccmidata = .;        /* create a global symbol at data start */
+    *(.ccmidata)           /* .data sections */
+    *(.ccmidata*)          /* .data* sections */
+
+    . = ALIGN(4);
+    _eccmidata = .;        /* define a global symbol at data end */
   } >CCMRAM AT> FLASH
   
+ 
   
     /* User_heap_stack section, used to check that there is enough "RAM" Ram  type memory left */
   ._user_heap_stack :

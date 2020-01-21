@@ -16,10 +16,12 @@ void BUZZER_Rollback_Task_Callback ( qEvent_t e) {
 }
 
 void BuzzOn(void) {
-	qTaskSetIterations(&BUZZER_Task,2+2*BUZZ_MAX_LENGTH);
-	qTaskSetIterations(&BUZZER_Rollback_Task,1);
-	qTaskSuspend(&BUZZER_Rollback_Task);
-	qTaskResume(&BUZZER_Task);
+	if (qTaskIsEnabled(&BUZZER_Task)!=1) {
+		qTaskSetIterations(&BUZZER_Task,2+2*BUZZ_MAX_LENGTH);
+		qTaskSetIterations(&BUZZER_Rollback_Task,1);
+		qTaskSuspend(&BUZZER_Rollback_Task);
+		qTaskResume(&BUZZER_Task);
+	}
 }
 
 void BuzzStop(void){
