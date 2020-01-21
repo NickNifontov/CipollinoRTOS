@@ -105,7 +105,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  LL_SYSTICK_EnableIT(); // Enable SysTick Interrupt
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -184,6 +184,7 @@ void SystemClock_Config(void)
   {
   
   }
+
   LL_Init1msTick(72000000);
   LL_SYSTICK_SetClkSource(LL_SYSTICK_CLKSOURCE_HCLK);
   LL_SetSystemCoreClock(72000000);

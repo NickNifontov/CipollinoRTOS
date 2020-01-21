@@ -31,10 +31,6 @@ void SetupQuarkTS(void) {
 }
 
 void RunQuarkTS(void) {
-
-	SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk |
-	                  SysTick_CTRL_TICKINT_Msk;
-
 	qSchedulerRun();
 }
 

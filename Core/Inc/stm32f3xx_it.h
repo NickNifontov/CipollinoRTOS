@@ -55,19 +55,19 @@ void UsageFault_Handler(void);
 void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
-void SysTick_Handler(void) __attribute__((section(".ccmram")));
+void SysTick_Handler(void);
 void PVD_IRQHandler(void);
 void EXTI3_IRQHandler(void);
 void DMA1_Channel2_IRQHandler(void);
 void DMA1_Channel7_IRQHandler(void);
 void EXTI9_5_IRQHandler(void);
 void EXTI15_10_IRQHandler(void);
-void COMP2_IRQHandler(void) __attribute__((section(".ccmram")));
-void COMP4_6_IRQHandler(void) __attribute__((section(".ccmram")));
-void HRTIM1_Master_IRQHandler(void) __attribute__((section(".ccmram")));
-void HRTIM1_TIMA_IRQHandler(void) __attribute__((section(".ccmram")));
-void HRTIM1_TIMB_IRQHandler(void) __attribute__((section(".ccmram")));
-void HRTIM1_FLT_IRQHandler(void) __attribute__((section(".ccmram")));
+void COMP2_IRQHandler(void);
+void COMP4_6_IRQHandler(void);
+void HRTIM1_Master_IRQHandler(void);
+void HRTIM1_TIMA_IRQHandler(void);
+void HRTIM1_TIMB_IRQHandler(void);
+void HRTIM1_FLT_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
