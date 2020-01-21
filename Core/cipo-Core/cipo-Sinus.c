@@ -5,7 +5,7 @@
  *      Author: Nick Nifontov
  */
 
-#include "cipo_Sinus.h"
+#include "cipo.h"
 
 CCMRAMDATA volatile uint16_t Sinus_Data[TICK_PER_SINUS] ={
 		0, 1, 32, 64, 95, 127, 158, 189, 221, 252, 283, 315, 346, 377, 408, 440, 471, 502, 533, 564, 595,

@@ -8,12 +8,10 @@
 #ifndef CIPO_CORE_CIPO_H_
 #define CIPO_CORE_CIPO_H_
 
-#define CCMRAM __attribute__((section(".ccmram")))
-#define CCMRAMDATA __attribute__((section(".ccmidata")))
-
+#include "cipo-INCLUDEs.h"
 #include "cipo-Config.h"
-#include "main.h"
-#include "cipo_Sinus.h"
+#include "cipo-Sinus.h"
+#include "cipo-PINs.h"
 
 // **** QuarkTS - BEGIN **** //
 #include "QuarkTS.h"
